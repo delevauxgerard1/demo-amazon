@@ -21,15 +21,15 @@ class CheckoutController extends Controller
             ->where('payment_intent', null)
             ->first();
 
-        // if (!is_null($order)) {
-        //     return redirect()->route('checkout_success.index');
-        // }
+        $intent = null;
 
-        $intent = $stripe->paymentIntents->create([
-            'amount' => (int) $order->total,
-            'currency' => 'usd',
-            'payment_method_types' => ['card'],
-        ]);
+        if ($order && $order->total > 0) {
+            $intent = $stripe->paymentIntents->create([
+                'amount' => (int) $order->total,
+                'currency' => 'usd',
+                'payment_method_types' => ['card'],
+            ]);
+        }
 
         return Inertia::render('Checkout', [
             'intent' => $intent,
