@@ -15,8 +15,6 @@ class AddressOptionsStoreRequest extends FormRequest
     {
         return [
             'country' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
             'addr1' => 'required',
             'addr2' => 'required',
             'city' => 'required',

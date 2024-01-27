@@ -10,6 +10,11 @@ class ProductController extends Controller
 {
     public function index(int $id)
     {
+        $product = Product::find($id);
+
+        if (!$product) {
+            abort(404);
+        }
         return Inertia::render('Product', [
             'product' => Product::find($id),
         ]);

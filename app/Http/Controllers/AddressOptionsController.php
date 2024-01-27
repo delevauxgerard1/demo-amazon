@@ -58,9 +58,15 @@ class AddressOptionsController extends Controller
     {
         try {
             $address = Address::find($id);
-            $address->delete();
+
+            if ($address) {
+                $address->delete();
+                return redirect()->route('address.index');
+            } else {
+                return response()->json(['error' => 'Address not found'], 404);
+            }
         } catch (\Exception $e) {
-            return response()->json($e->getMessage());
+            return response()->json($e->getMessage(), 500);
         }
     }
 }

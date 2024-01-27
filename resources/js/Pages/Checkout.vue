@@ -103,6 +103,7 @@ const payWithCard = (stripe, card, clientSecret) => {
 // Shows a success message when the payment is complete
 const orderComplete = (paymentIntentId) => {
     data.payment_intent = paymentIntentId
+    console.log(data);
     data.put('/checkout')
 }
 
@@ -212,15 +213,18 @@ const totalWithoutDot = () => {
             </div>
         </div>
         <div class="w-[1200px] mx-auto text-xl font-bold pb-2 underline">Items</div>
-        <div class="w-[1200px] mx-auto" v-for="prod in JSON.parse(order.items)" :key="prod">
-            <div class="flex items-center py-1">
-                <img width="60" :src="prod.image" class="rounded-md" alt="">
-                <div class="ml-4">
-                    <div class="text-lg font-semibold">{{ prod.title }}</div>
-                    <div class="font-semibold text-red-700">${{ prod.price }}</div>
+        <div class="w-[1200px] mx-auto" v-if="order && order.items">
+            <div v-for="prod in JSON.parse(order.items)" :key="prod">
+                <div class="flex items-center py-1">
+                    <img width="60" :src="prod.image" class="rounded-md" alt="">
+                    <div class="ml-4">
+                        <div class="text-lg font-semibold">{{ prod.title }}</div>
+                        <div class="font-semibold text-red-700">${{ prod.price }}</div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </AuthenticatedLayout>
 </template>
 
