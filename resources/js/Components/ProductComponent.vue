@@ -16,13 +16,13 @@ const { product } = toRefs(props);
                 </div>
                 <div class="flex justify-between items-center">
                     <div class="text-2x1 p-1 font-semibold w-full text-left">{{ product.price }}</div>
-                    <img width="80"  src="../../../public/images/logo/PRIME_LOGO.png" >
+                    <img width="80"  src="/images/logo/PRIME_LOGO.png" >
                 </div>
                 <div class="flex justify-between items-center">
                     <div class="text-2x1 p-1 font-semibold w-full text-left">In Stock</div>
                 </div>
                 <div class="flex justify-between items-center">
-                    <img width="80" src="../../../public/images/STARS.png">
+                    <img width="80" src="/images/STARS.png">
                 </div>
             </div>
         </Link>
