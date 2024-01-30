@@ -125,12 +125,12 @@ const accountAndListFunc = (bool) => {
                                 <div class="w-1/2 ml-5">
                                     <div class="pb-3">
                                         <div class="font-extrabold pt-3">Your Account</div>
-                                        <Link
+                                        <!-- <Link
                                             :href="route('profile.edit')"
                                             class="text-sm block hover:text-red-600 hover:underline pt-3"
                                         >
                                             Account
-                                        </Link>
+                                        </Link> -->
                                         <Link
                                             :href="route('logout')"
                                             method="post"

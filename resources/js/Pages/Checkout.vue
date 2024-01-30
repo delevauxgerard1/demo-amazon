@@ -62,17 +62,25 @@ onMounted(() => {
         items: cart.value
     });
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        // Verifica si la dirección está presente antes de procesar el pago
         if (!$page.props.auth.address) {
             showError("Please add a shipping address before placing the order.");
             return;
         }
 
-        // Complete payment when the submit button is clicked
-        payWithCard(stripe, card, intent.value.client_secret);
+        loading(true);
+
+        try {
+            await payWithCard(stripe, card, intent.value.client_secret);
+
+            loading(false);
+        } catch (error) {
+            showError(error.message);
+
+            loading(false);
+        }
     });
 })
 
