@@ -262,7 +262,7 @@ const accountAndListFunc = (bool) => {
                             </Link>
                             <div class="flex justify-start">
                                 <div class="text-xs font-extrabold text-red-600 w-full text-left">${{ product.price }}</div>
-                                <img width="50" src="/images/logo/PRIME_LOGO.PNG" alt="">
+                                <img width="50"  src="/images/logo/PRIME_LOGO.png" >
                             </div>
                         </div>
                     </div>
