@@ -24,9 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/address_options', [AddressOptionsController::class, 'store'])->name('address_options.store');
     Route::delete('/address_options/{id}', [AddressOptionsController::class, 'destroy'])->name('address_options.destroy');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    //Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');

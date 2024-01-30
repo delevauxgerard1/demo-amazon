@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->text('addr1');
-            $table->text('addr2');
+            $table->text('addr2')->nullable();
             $table->text('city');
             $table->text('postcode');
             $table->text('country');

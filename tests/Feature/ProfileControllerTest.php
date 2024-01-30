@@ -26,14 +26,14 @@ class ProfileControllerTest extends TestCase
         ])->create();
     }
 
-    public function test_redirect_when_nonauthenticated_user_enters_into_profile()
+    public function redirect_when_nonauthenticated_user_enters_into_profile()
     {
         $response = $this->get(route('profile.edit'));
 
         $response->assertRedirect('/login');
     }
 
-    public function test_display_profile_edit_form_with_user_data()
+    public function display_profile_edit_form_with_user_data()
     {
         $response = $this->actingAs($this->user)->get(route('profile.edit'));
 
@@ -48,7 +48,7 @@ class ProfileControllerTest extends TestCase
         $this->assertDatabaseHas('users', ['id' => $this->user->id]);
     }
 
-    public function test_it_updates_profile_for_authenticated_user()
+    public function it_updates_profile_for_authenticated_user()
     {
         $updatedData = [
             'first_name' => 'UpdatedJhon',
@@ -68,7 +68,7 @@ class ProfileControllerTest extends TestCase
         $this->assertEquals($updatedData['email'], $updatedUser->email);
     }
 
-    public function test_it_updates_profile_for_nonauthenticated_user()
+    public function it_updates_profile_for_nonauthenticated_user()
     {
         $updatedData = [
             'first_name' => 'UpdatedJhon',
@@ -85,7 +85,7 @@ class ProfileControllerTest extends TestCase
         $this->assertDatabaseHas('users', ['email' => $this->user->email]);
     }
 
-    public function test_it_not_updates_profile_for_authenticated_user_when_firstname_is_missing()
+    public function it_not_updates_profile_for_authenticated_user_when_firstname_is_missing()
     {
         $updatedData = [
             'first_name' => null,
@@ -99,7 +99,7 @@ class ProfileControllerTest extends TestCase
         $this->assertDatabaseHas('users', ['first_name' => $this->user->first_name]);
     }
 
-    public function test_it_deletes_own_user_when_authenticated()
+    public function it_deletes_own_user_when_authenticated()
     {
         $password = 'password';
 
@@ -113,7 +113,7 @@ class ProfileControllerTest extends TestCase
         $this->assertDatabaseMissing('users', ['id' => $this->user->id]);
     }
 
-    public function test_it_not_deletes_user_when_nonauthenticated()
+    public function it_not_deletes_user_when_nonauthenticated()
     {
         $password = 'password';
 
@@ -127,7 +127,7 @@ class ProfileControllerTest extends TestCase
         $this->assertDatabaseHas('users', ['id' => $this->user->id]);
     }
 
-    public function test_it_not_deletes_user_when_authenticated_user_sends_wrong_password()
+    public function it_not_deletes_user_when_authenticated_user_sends_wrong_password()
     {
         $password = 'wrongpassword';
 
